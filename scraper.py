@@ -5,14 +5,14 @@ import time
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
-# Session réutilisable avec retry automatique (évite les blocages temporaires)
+
 session = requests.Session()
 retry = Retry(total=5, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
 adapter = HTTPAdapter(max_retries=retry)
 session.mount("http://", adapter)
 session.mount("https://", adapter)
 
-# Headers pour faire croire qu’on est un vrai navigateur
+
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
     "Accept-Language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
@@ -68,7 +68,7 @@ def scrape_category(base_url, pages):
             except Exception:
                 continue
 
-        time.sleep(1)  # Être gentil avec le site
+        time.sleep(1) 
 
     # Nettoyage des données
     df = pd.DataFrame(data)
@@ -83,7 +83,7 @@ def scrape_category(base_url, pages):
     return df
 
 
-# Les 4 fonctions que tu appelles dans app.py
+
 def scrape_clothes_men(pages):
     return scrape_category("https://sn.coinafrique.com/categorie/vetements-homme", pages)
 

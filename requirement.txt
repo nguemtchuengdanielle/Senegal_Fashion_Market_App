@@ -1,6 +1,8 @@
-streamlit
+streamlit>=1.38.0
+plotly>=5.24.0
+pandas>=2.1.0
+numpy
+pillow
+openpyxl
 selenium
 beautifulsoup4
-pandas
-sqlite3
-plotly
